@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" th:href="@{/style/registration.css}"></head>
+<body>
+<div th:if="${param.success}" style="font-size: 18px; font-weight: bold; color: #4CAF50; text-align: center;">
+    Вы успешно зарегистрировались
+</div>
+<form method="post" th:action="@{/registration/save}" th:object="${user}">
+    <label for="login">Логин</label>
+    <input th:field="*{login}" type="text" id="login" placeholder="Введите ваш логин" required>
+
+    <label for="password">Пароль</label>
+    <input th:field="*{password}" type="password" id="password" placeholder="Введите пароль" required>
+
+    <button type="submit">Зарегистрировать</button>
+</form>
+</body>
+</html>
