@@ -22,11 +22,15 @@ public class Player {
 
     private boolean inPrison;
 
-    private Long currentFieldId;
+    private int currentFieldId;
 
 
     public Player(PlayerDto playerDto) {
         this.name = playerDto.getName();
+        this.score = 1000;
+        this.inPrison = false;
+        this.currentFieldId = 0;
     }
+
 
 }

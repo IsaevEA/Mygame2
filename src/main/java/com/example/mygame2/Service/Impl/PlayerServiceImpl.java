@@ -9,23 +9,28 @@ import org.springframework.stereotype.Service;
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
+
     public PlayerServiceImpl(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
     @Override
     public boolean add(Player player) {
+
         if (playerRepository.findByName(player.getName()) != null) {
             return false;
         }
         playerRepository.save(player);
-        return false;
+        return true;
     }
 
     @Override
     public Player delete(String name) {
-        return playerRepository.deleteByName(name);
+        Player player = playerRepository.findByName(name);
+        if (player != null) {
+            playerRepository.delete(player);
+            return player;
+        }
+        return null;
     }
-
-
 }

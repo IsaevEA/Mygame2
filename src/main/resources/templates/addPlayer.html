@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить игрока</title>
-    <link rel="stylesheet" th:href="@{/styles/style.css}">
+
+    <link rel="stylesheet" th:href="@{/styles/add.css}">
 </head>
 <body>
 <h1>Добавить игрока</h1>
 
-<form action="/addPlayer" method="post">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" th:field="*{name}" required>
+<form action="#" th:action="@{/addPlayer}" th:object="${player}" method="post">
+    <label> "Имя"<input type="text" th:field="*{name}"></label><br/>
 
     <button type="submit">Добавить</button>
 </form>
 
-<div th:if="${message}" style="color: green;">
+<div th:if="${message}" class="success-message">
     <p th:text="${message}"></p>
 </div>
 
-<div th:if="${error}" style="color: red;">
+<div th:if="${error}" class="error-message">
     <p th:text="${error}"></p>
 </div>
+
 </body>
 </html>

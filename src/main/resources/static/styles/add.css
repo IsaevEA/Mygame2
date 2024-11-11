@@ -1,0 +1,142 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-image: url('https://kartinki.pics/uploads/posts/2021-07/thumbs/1625830907_23-kartinkin-com-p-monopoliya-art-art-krasivo-24.png'); /* Замените на свой URL */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    box-sizing: border-box;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Стили для формы */
+form {
+    background-color: rgba(0, 0, 0, 0.6);  /* Полупрозрачный темный фон */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+    text-align: center;
+    backdrop-filter: blur(10px);  /* Размытие заднего фона */
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Стили для заголовка */
+h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Стили для полей ввода */
+label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для текстовых полей */
+input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Эффект при фокусе на поле ввода */
+input[type="text"]:focus {
+    border-color: #4CAF50; /* Зеленая граница при фокусе */
+    outline: none;
+    transform: scale(1.02);
+}
+
+/* Стили для кнопки */
+button {
+    width: 100%;
+    padding: 18px;
+    background-color: #4CAF50;  /* Зеленый фон */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Эффект для кнопки при фокусе */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(72, 230, 111, 0.7);
+}
+
+/* Стили для состояний и отступов */
+form > label,
+form > input,
+form > button {
+    margin-bottom: 24px;
+}
+
+/* Для сообщений об ошибке и успехе */
+div {
+    margin-top: 20px;
+}
+
+div p {
+    font-size: 16px;
+    font-weight: bold;
+}
+/* Стили для успешного сообщения */
+.success-message {
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Стили для ошибки */
+.error-message {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        padding: 14px;
+    }
+
+    button {
+        padding: 16px;
+    }
+}

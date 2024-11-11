@@ -24,6 +24,7 @@ public class PlayerController {
 
     @GetMapping("/addPlayer")
     public String showAddPlayerForm(Model model, String name) {
+
         model.addAttribute("player", new PlayerDto(name));
         return "addPlayer";
     }
@@ -39,14 +40,13 @@ public class PlayerController {
         return "addPlayer";
     }
 
-    // Страница для удаления игрока
     @GetMapping("/deletePlayer")
     public String showDeletePlayerForm(Model model) {
         model.addAttribute("player", new Player());
         return "deletePlayer";
     }
 
-    // Обработка удаления игрока
+
     @PostMapping("/deletePlayer")
     public String deletePlayer(@ModelAttribute Player player, Model model) {
         Player deletedPlayer = playerService.delete(player.getName());
