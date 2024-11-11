@@ -14,13 +14,17 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void add(Player player) {
+    public boolean add(Player player) {
+        if (playerRepository.findByName(player.getName()) != null) {
+            return false;
+        }
         playerRepository.save(player);
+        return false;
     }
 
     @Override
-    public Player getPlayer(String id) {
-        return playerRepository.getReferenceById(id);
+    public Player delete(String name) {
+        return playerRepository.deleteByName(name);
     }
 
 

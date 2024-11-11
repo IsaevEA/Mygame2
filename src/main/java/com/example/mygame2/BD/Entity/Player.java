@@ -1,11 +1,10 @@
 package com.example.mygame2.BD.Entity;
 
+import com.example.mygame2.BD.Dto.PlayerDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
 
 @Entity
 @Data
@@ -26,6 +25,8 @@ public class Player {
     private Long currentFieldId;
 
 
-
+    public Player(PlayerDto playerDto) {
+        this.name = playerDto.getName();
+    }
 
 }

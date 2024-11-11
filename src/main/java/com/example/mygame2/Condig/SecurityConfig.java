@@ -18,56 +18,36 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final MyUserDetailService myUserDetailService;
 
-    // Constructor injection for MyUserDetailService
     @Autowired
     public SecurityConfig(MyUserDetailService myUserDetailService) {
         this.myUserDetailService = myUserDetailService;
     }
-    /**
-     * Configures the security filter chain.
-     *
-     * @param httpSecurity the HttpSecurity object to configure
-     * @return the configured SecurityFilterChain
-     * @throws Exception in case of any configuration error
-     */
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
                         authorize -> {
-                            // Permit access to static resources and login, home, and error pages
-                            authorize.requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
-                            authorize.requestMatchers("/login","/registration/**", "/error", "/logout", "/", "/game").permitAll();
-                            // Restrict access to admin and user pages based on roles
-                            // All other requests require authentication
+                            authorize.requestMatchers("/css/**","/styles/**", "/js/**", "/images/**").permitAll();
+                            authorize.requestMatchers("/login","/registration/**", "/error", "/logout", "/", "/home").permitAll();
                             authorize.anyRequest().authenticated();
                         }
                 ).formLogin(formLogin -> formLogin
-                        .loginPage("/login")  // Custom login page
-                        .defaultSuccessUrl("/index", true)  // Redirect to home after successful login
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/addPlayer", true)  // Перенаправление на /addPlayer
                         .permitAll())
                 .logout(logout -> logout.logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")  // Redirect to login page after logout
+                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 )
-                .csrf(AbstractHttpConfigurer::disable)  // Disable CSRF for simplicity (not recommended for production)
+                .csrf(AbstractHttpConfigurer::disable)
                 .build();
     }
 
-    /**
-     * Configures the UserDetailsService.
-     *
-     * @return the configured UserDetailsService
-     */
     @Bean
     public UserDetailsService userDetailService() {
         return myUserDetailService;
     }
 
-    /**
-     * Configures the AuthenticationProvider.
-     *
-     * @return the configured AuthenticationProvider
-     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -76,11 +56,6 @@ public class SecurityConfig {
         return daoAuthenticationProvider;
     }
 
-    /**
-     * Configures the password encoder.
-     *
-     * @return the configured BCryptPasswordEncoder
-     */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();

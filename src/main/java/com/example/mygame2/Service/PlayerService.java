@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface PlayerService {
-    void add (Player player);
-    Player getPlayer (String id);
+    boolean add (Player player);
+    Player delete (String name);
 }

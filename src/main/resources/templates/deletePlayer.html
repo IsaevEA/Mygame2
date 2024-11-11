@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить игрока</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+<h1>Удалить игрока</h1>
+
+<form action="/deletePlayer" method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required>
+
+    <button type="submit">Удалить</button>
+</form>
+
+<div th:if="${message}" style="color: green;">
+    <p th:text="${message}"></p>
+</div>
+
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>
